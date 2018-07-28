@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.isdev.ssm.bean.Emp">
+    <resultMap id="emp" type="cn.isdev.ssm.bean.Emp">
+        <id property="id" column="eid"/>
+        <result property="name" column="ename"/>
+        <result property="sal" column="esal"/>
+        <result property="sex" column="esex"/>
+    </resultMap>
+
+    <insert id="add" parameterType="Emp">
+        insert into emp (eid, ename, esal, esex) values (#{id}, #{name}, #{sal}, #{sex})
+    </insert>
+</mapper>

@@ -2,13 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8"/>
         <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?characterEncoding=utf-8"/>
+        <property name="user" value="root"/>
         <property name="password" value="root"/>
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -33,4 +41,21 @@
          transaction-manager：引用上面定义的事务管理器
      -->
     <tx:annotation-driven transaction-manager="txManager" />
+
+    <!--配置事务增强，即配置让哪些方法支持事务
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    &lt;!&ndash;配置事务切面， 即配置让哪些包下的类支持事务&ndash;&gt;
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* cn.isdev.ssm.dao..*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>.
+    </aop:config>-->
+
+    <bean id="empDao" class="cn.isdev.ssm.dao.EmpDao">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
 </beans>

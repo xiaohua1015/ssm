@@ -26,7 +26,7 @@ public class MybatisUtils {
 
     static {
         try {
-            Reader reader = Resources.getResourceAsReader("test/mybatis-config.xml");
+            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException e) {
             e.printStackTrace();

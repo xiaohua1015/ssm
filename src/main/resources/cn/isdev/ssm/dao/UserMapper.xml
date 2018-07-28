@@ -118,8 +118,8 @@
 
 
     <!-- <include refid="key"/>和<include refid="value"/>表示引用上面定义的sql片段 -->
-    <insert id="dynaInsert" parameterType="cn.itcast.javaee.mybatis.app14.Student">
+    <!--<insert id="dynaInsert" parameterType="cn.itcast.javaee.mybatis.app14.Student">
         insert into students(<include refid="key"/>) values(<include refid="value"/>)
     </insert>
-
+-->
 </mapper>

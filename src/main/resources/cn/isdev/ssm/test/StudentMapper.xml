@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+ -->
+<mapper namespace="cn.isdev.ssm.dao.Student">
+
+    <!-- 匹配bean 与数据库表的字段名-->
+    <resultMap id="student" type="cn.isdev.ssm.bean.Student">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <association property="card" resultMap="cn.isdev.ssm.dao.Card.card"/>
+    </resultMap>
+
+    <select id="findById" parameterType="int" resultMap="student">
+        select s.id, s.name, c.id, c.num
+        from students s inner join cards c
+        on s.cid = c.id
+        and s.id = #{id}
+    </select>
+
+</mapper>

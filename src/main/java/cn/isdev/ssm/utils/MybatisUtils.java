@@ -1,7 +1,9 @@
 package cn.isdev.ssm.utils;
 
+import cn.isdev.ssm.bean.Student;
 import cn.isdev.ssm.bean.User;
 import cn.isdev.ssm.dao.IUserDao;
+import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -24,7 +26,7 @@ public class MybatisUtils {
 
     static {
         try {
-            Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+            Reader reader = Resources.getResourceAsReader("test/mybatis-config.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException e) {
             e.printStackTrace();
@@ -49,6 +51,14 @@ public class MybatisUtils {
     }
 
     public static void main(String[] args) {
+//        baseTest();
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        Student student= sqlSession.selectOne("cn.isdev.ssm.dao.Student.findById", 1);
+        System.out.println("student = " + student);
+        MybatisUtils.closeSqlSession();
+    }
+
+    private static void baseTest() {
         Connection connection = MybatisUtils.getSqlSession().getConnection();
         if(connection == null) {
             System.out.println("链接失败");

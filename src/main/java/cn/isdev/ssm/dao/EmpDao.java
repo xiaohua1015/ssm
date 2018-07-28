@@ -21,8 +21,8 @@ public class EmpDao {
             sqlSession.insert(Emp.class.getName() + ".add", emp);
             sqlSession.commit();
         } catch (Exception e) {
-            e.printStackTrace();
             sqlSession.rollback();
+            throw e;
         } finally {
             sqlSession.close();
         }

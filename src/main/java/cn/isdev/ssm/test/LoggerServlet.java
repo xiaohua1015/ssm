@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by lsh134667 on 2018/7/26.
@@ -20,9 +19,10 @@ import java.util.List;
 @WebServlet(name = "LoggerServlet", urlPatterns = "/test")
 public class LoggerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html; charset=utf-8");
         Logger logger = LogManager.getLogger(LoggerServlet.class);
         logger.debug("response befor");
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         IUserDao userDao = context.getBean(IUserDao.class);
         User user = userDao.findById(1);
         response.getWriter().write("testServlet" + user);

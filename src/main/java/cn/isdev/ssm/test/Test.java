@@ -10,8 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         EmpDao empDao = context.getBean("empDao", EmpDao.class);
-        empDao.add(new Emp(2, "小明", 12000.89, "F"));
+        empDao.add(new Emp(3, "小明", 12000.89, "F"));
     }
 }

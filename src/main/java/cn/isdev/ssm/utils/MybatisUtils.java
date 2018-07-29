@@ -3,7 +3,6 @@ package cn.isdev.ssm.utils;
 import cn.isdev.ssm.bean.Student;
 import cn.isdev.ssm.bean.User;
 import cn.isdev.ssm.dao.IUserDao;
-import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

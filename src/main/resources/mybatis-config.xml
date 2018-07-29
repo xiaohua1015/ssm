@@ -6,8 +6,9 @@
     <properties resource="db.properties"/>
     <!-- 实体类,简称 -设置别名 -->
     <typeAliases>
-        <typeAlias alias="User" type="cn.isdev.ssm.bean.User" />
-        <typeAlias alias="Emp" type="cn.isdev.ssm.bean.Emp" />
+        <!--<typeAlias alias="User" type="cn.isdev.ssm.bean.User" />
+        <typeAlias alias="Emp" type="cn.isdev.ssm.bean.Emp" />-->
+        <package name="cn.isdev.ssm.bean"/>
     </typeAliases>
 
     <!--<environments default="mysql_developer">
@@ -25,9 +26,9 @@
     <!--
         说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml
     -->
-    <mappers>
+    <!--<mappers>
         <mapper resource="cn/isdev/ssm/dao/UserMapper.xml"/>
         <mapper resource="cn/isdev/ssm/dao/EmpMapper.xml"/>
-    </mappers>
+    </mappers>-->
 
 </configuration>

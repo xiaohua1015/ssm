@@ -34,6 +34,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:cn/isdev/ssm/dao/*.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -54,10 +55,10 @@
      -->
     <tx:annotation-driven transaction-manager="txManager" />
 
-    <!--配置事务增强，即配置让哪些方法支持事务
-    <tx:advice id="txAdvice" transaction-manager="txManager">
+    <!--配置事务增强，即配置让哪些方法支持事务-->
+    <!--<tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
-            <tx:method name="*" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
         </tx:attributes>
     </tx:advice>
 

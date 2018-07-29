@@ -24,6 +24,7 @@ public class LoggerServlet extends HttpServlet {
         logger.debug("response befor");
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         IUserDao userDao = context.getBean(IUserDao.class);
+//        IUserDao userDao = context.getBean("userDao", IUserDao.class);
         User user = userDao.findById(1);
         response.getWriter().write("testServlet" + user);
         System.out.println("user = " + user);

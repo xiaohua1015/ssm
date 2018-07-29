@@ -27,7 +27,7 @@
     -->
     <mappers>
         <mapper resource="cn/isdev/ssm/dao/UserMapper.xml"/>
-        <mapper resource="cn/isdev/ssm/bean/EmpMapper.xml"/>
+        <mapper resource="cn/isdev/ssm/dao/EmpMapper.xml"/>
     </mappers>
 
 </configuration>

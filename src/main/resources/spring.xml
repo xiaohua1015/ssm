@@ -39,7 +39,7 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="cn.isdev.ssm.dao"/>
         <!--<property name="sqlSessionFactory" value="sqlSessionFactory"/>-->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
     </bean>
     <!--
         4. 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源

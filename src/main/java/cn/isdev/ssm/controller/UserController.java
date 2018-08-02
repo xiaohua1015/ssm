@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -33,12 +35,16 @@ public class UserController {
 
     @RequestMapping(value = "/finById")
     @ResponseBody
-    public User register(int id) {
+    public Map register(int id) {
         Logger logger = Logger.getLogger(UserController.class.getName());
         try {
             User user = userDao.findById(1);
             System.out.println("user = " + user);
-            return user;
+            Map<String, Object> map = new HashMap();
+            map.put("id", user.getId());
+            map.put("name", user.getName());
+            map.put("password", user.getPassword());
+            return map;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -26,7 +26,7 @@ public class LoggerServlet extends HttpServlet {
         IUserDao userDao = context.getBean(IUserDao.class);
 //        IUserDao userDao = context.getBean("userDao", IUserDao.class);
         User user = userDao.findById(1);
-        response.getWriter().write("testServlet" + user);
+        response.getWriter().write(user.toString());
         System.out.println("user = " + user);
         logger.error("user ====" + user);
         /*ist<User> all = userDao.findAll();
